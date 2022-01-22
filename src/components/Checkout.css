@@ -16,24 +16,3 @@
   border-bottom: 1px solid lightgray;
 }
 
-.checkout__item {
-  display: flex;
-  flex-direction: row;
-  align-items: left;
-  justify-content: flex-start;
-  margin: 10px;
-  padding: 20px;
-}
-
-.checkout__item > img {
-  max-height: 200px;
-  width: 15%;
-  object-fit: contain;
-  margin-bottom: 15px;
-}
-
-.product__info > button {
-  margin-top: 15px;
-  color: red;
-  cursor: pointer;
-}
