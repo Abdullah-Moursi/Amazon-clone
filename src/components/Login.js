@@ -10,6 +10,14 @@ const Login = () => {
 
   const signIn = (e) => {
     e.preventDefault();
+    auth
+    .signInWithEmailAndPassword(email, password)
+    .then((auth) => {
+      if (auth) {
+        navigate("/");
+      }
+    })
+    .catch((error) => alert(error.message));
   };
 
   const register = (e) => {
