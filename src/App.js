@@ -6,13 +6,14 @@ import Login from "./components/Login";
 import { useEffect } from "react";
 import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
+import Payment from "./components/Payment";
 
 function App() {
   const [{}, dispatch] = useStateValue();
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-      console.log('the user is>>>', authUser);
+      console.log("the user is>>>", authUser);
 
       if (authUser) {
         dispatch({
@@ -32,7 +33,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/login" element={<Login />}></Route>
+          <Route path="/login" element={<Login />} />
           <Route
             path="/checkout"
             element={
@@ -41,7 +42,7 @@ function App() {
                 <Checkout />
               </>
             }
-          ></Route>
+          />
           <Route
             path="/"
             element={
@@ -50,7 +51,16 @@ function App() {
                 <Home />
               </>
             }
-          ></Route>
+          />
+          <Route
+            path="/payment"
+            element={
+              <>
+                <Header />
+                <Payment />
+              </>
+            }
+          />
         </Routes>
       </div>
     </Router>
