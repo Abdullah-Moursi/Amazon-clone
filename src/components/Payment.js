@@ -3,10 +3,10 @@ import CheckoutProduct from "./CheckoutProduct";
 import { useStateValue } from "../StateProvider";
 import { getBasketTotal } from "../reducer";
 import "./Payment.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
-import axios from "axios";
+import axios from "../axios";
 
 const Payment = () => {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -18,14 +18,16 @@ const Payment = () => {
   const [disabled, setDisabled] = useState(true);
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState("");
-  const [clientSecret, setClientSecret] = useState('');
+  const [clientSecret, setClientSecret] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getClientSecret = async () => {
       const response = await axios({
         method: "post",
         // Stripe expects currencies subunits, so, we multiply
-        url: `/payment/create?total=${getBasketTotal(basket) * 100}`,
+        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
       });
       setClientSecret(response.data.clientSecret);
     };
@@ -40,12 +42,12 @@ const Payment = () => {
       payment_method: {
         card: elements.getElement(CardElement),
       },
-    }).then(({ paymentIntend }) => {
+    }).then(({ paymentIntent }) => {
       setSucceeded(true);
       setError(null);
       setProcessing(false);
 
-      history.replace('/orders')
+      navigate('/orders')
     })
   };
 
