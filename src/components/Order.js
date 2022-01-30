@@ -20,6 +20,7 @@ const Order = ({ order }) => {
           id={el.id}
           price={el.price}
           rating={el.rating}
+          hideButton
         />
       ))}
       <CurrencyFormat
