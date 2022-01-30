@@ -9,6 +9,7 @@ import { useStateValue } from "./StateProvider";
 import Payment from "./components/Payment";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import Orders from "./components/Orders";
 
 const promise = loadStripe(
   "pk_test_51KND7jK6jfjgEuSCOsS9fZJRk3pzKu95oYy6NkscgBB0H7bwZHwJsGgqvqBCVM1DwNvusY8THHOfJ1QWCgEEW7ww00sHzWpU4C"
@@ -66,6 +67,15 @@ function App() {
                 <Elements stripe={promise}>
                   <Payment />
                 </Elements>
+              </>
+            }
+          />
+           <Route
+            path="/orders"
+            element={
+              <>
+                <Header />
+                <Orders />
               </>
             }
           />
