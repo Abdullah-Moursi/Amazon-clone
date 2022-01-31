@@ -1,9 +1,10 @@
 import Header from "./components/Header";
 import Home from "./components/Home";
+import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Checkout from "./components/Checkout";
 import Login from "./components/Login";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
 import Payment from "./components/Payment";
@@ -17,6 +18,7 @@ const promise = loadStripe(
 );
 
 function App() {
+  const [nightMode, setNightMode] = useState(false);
   const [{}, dispatch] = useStateValue();
 
   useEffect(() => {
@@ -39,15 +41,15 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div className={`App ${nightMode? 'App_night' : ''}`}>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route
             path="/checkout"
             element={
               <>
-                <Header />
-                <Checkout />
+                <Header nightMode={nightMode} setNightMode={setNightMode} />
+                <Checkout nightMode={nightMode} />
                 <Footer />
               </>
             }
@@ -56,8 +58,8 @@ function App() {
             path="/"
             element={
               <>
-                <Header />
-                <Home />
+                <Header nightMode={nightMode} setNightMode={setNightMode} />
+                <Home nightMode={nightMode}/>
                 <Footer />
               </>
             }
@@ -66,20 +68,20 @@ function App() {
             path="/payment"
             element={
               <>
-                <Header />
+                <Header nightMode={nightMode} setNightMode={setNightMode} />
                 <Elements stripe={promise}>
-                  <Payment />
+                  <Payment nightMode={nightMode}/>
                 </Elements>
                 <Footer />
               </>
             }
           />
-           <Route
+          <Route
             path="/orders"
             element={
               <>
-                <Header />
-                <Orders />
+                <Header nightMode={nightMode} setNightMode={setNightMode} />
+                <Orders nightMode={nightMode}/>
                 <Footer />
               </>
             }

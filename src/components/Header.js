@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasket from "@material-ui/icons/ShoppingBasket";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 import { auth } from "../firebase";
+import { FormControlLabel, Switch } from "@material-ui/core";
 
-function Header() {
+function Header({nightMode, setNightMode}) {
   const [{ basket, user }] = useStateValue();
 
+  const handleChange = () => {
+    setNightMode(!nightMode)
+    console.log(nightMode)
+  };
   const handleAuthentication = () => {
     if (user) {
       auth.signOut();
@@ -24,6 +29,16 @@ function Header() {
           alt="logo"
         />
       </Link>
+
+      <FormControlLabel
+          control={
+            <Switch    
+              checked={nightMode}
+              onChange={handleChange}
+              color="primary"
+            />
+          }
+        />
 
       <div className="header__search">
         <input className="header__searchInput" type="text" />

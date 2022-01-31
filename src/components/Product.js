@@ -2,8 +2,8 @@ import React from "react";
 import { useStateValue } from "../StateProvider";
 import "./Product.css";
 
-const Product = ({ id, title, image, price, rating }) => {
-  const [{basket}, dispatch] = useStateValue();
+const Product = ({ id, title, image, price, rating, nightMode }) => {
+  const [{ basket }, dispatch] = useStateValue();
 
   const addToBasket = () => {
     dispatch({
@@ -18,7 +18,7 @@ const Product = ({ id, title, image, price, rating }) => {
     });
   };
   return (
-    <div className="product">
+    <div className={`product ${nightMode? 'product_night ' : ''}`}>
       <div className="product__info">
         <p>{title}</p>
         <p className="product__price">
@@ -29,7 +29,7 @@ const Product = ({ id, title, image, price, rating }) => {
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <p key={i} >⭐</p>
+              <p key={i}>⭐</p>
             ))}
         </div>
       </div>

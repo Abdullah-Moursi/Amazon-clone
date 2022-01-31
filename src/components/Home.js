@@ -60,7 +60,7 @@ const products = [
     price: 70.32,
   },
 ];
-const Home = () => {
+const Home = ({nightMode}) => {
   return (
     <div className="home">
       <div className="home__container">
@@ -74,6 +74,7 @@ const Home = () => {
           {products.map((product) => (
             <div className="home__item">
               <Product
+              nightMode={nightMode}
                 id={product.id}
                 image={product.image}
                 rating={product.rating}

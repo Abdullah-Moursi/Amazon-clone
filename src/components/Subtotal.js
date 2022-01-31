@@ -5,12 +5,12 @@ import { getBasketTotal } from "../reducer";
 import { useStateValue } from "../StateProvider";
 import { useNavigate } from "react-router-dom";
 
-const Subtotal = () => {
+const Subtotal = ({nightMode}) => {
   const navigate = useNavigate();
   const [{ basket }] = useStateValue();
 
   return (
-    <div className="subtotal">
+    <div className={`subtotal ${nightMode ? 'subtotal_night' : ''}`}>
       <CurrencyFormat
         renderText={(value) => (
           <>

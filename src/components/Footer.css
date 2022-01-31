@@ -6,6 +6,7 @@
   text-align: center;
   z-index: 100;
   background-color: #232f3e;
+  /* bottom: 0; */
 }
 
 .footer__backToTop {

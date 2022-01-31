@@ -1,5 +1,12 @@
 .payment {
   background-color: white;
+  min-height: 90vh;
+}
+
+.payment_night {
+  background-color: rgb(5, 5, 12);
+  color: rgb(179, 177, 177);
+
 }
 
 .payment__container > h1 {
@@ -8,6 +15,12 @@
   font-weight: 400;
   background-color: rgb(234, 237, 237);
   border-bottom: 1px solid lightgray;
+}
+
+.payment__container_night > h1 {
+  background-color: #0b0b20;
+  border-bottom: 1px solid #3e3e77;
+  color: rgb(201, 200, 200);
 }
 
 .payment__container > h1 > a {

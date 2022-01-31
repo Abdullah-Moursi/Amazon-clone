@@ -4,7 +4,7 @@ import { useStateValue } from "../StateProvider";
 import Order from "./Order";
 import "./Orders.css";
 
-const Orders = () => {
+const Orders = ({nightMode}) => {
   const [{ basket, user }, dispatch] = useStateValue();
   const [orders, setOrders] = useState([]);
 
@@ -28,11 +28,11 @@ const Orders = () => {
   }, [user]);
 
   return (
-    <div className="orders">
+    <div className={`orders ${nightMode ? 'orders_night' : ''}`}>
       <h1>Your Orders</h1>
       <div className="orders__order">
         {orders?.map((order) => (
-          <Order order={order} />
+          <Order nightMode={nightMode} order={order} />
         ))}
       </div>
     </div>

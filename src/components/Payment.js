@@ -9,7 +9,7 @@ import CurrencyFormat from "react-currency-format";
 import axios from "../axios";
 import { db } from "../firebase";
 
-const Payment = () => {
+const Payment = ({nightMode}) => {
   const [{ basket, user }, dispatch] = useStateValue();
 
   const stripe = useStripe();
@@ -75,8 +75,8 @@ const Payment = () => {
   };
 
   return (
-    <div className="payment">
-      <div className="payment__container">
+    <div className={`payment ${nightMode ? 'payment_night' : ''}`}>
+      <div className={`payment__container ${nightMode ? 'payment__container_night' : ''}`}>
         {" "}
         <h1>
           Checkout ({<Link to={"/checkout"}> {basket?.length} items </Link>})

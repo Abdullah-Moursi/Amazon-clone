@@ -4,9 +4,9 @@ import "./Order.css";
 import CheckoutProduct from "./CheckoutProduct";
 import CurrencyFormat from "react-currency-format";
 
-const Order = ({ order }) => {
+const Order = ({ order, nightMode }) => {
   return (
-    <div className="order">
+    <div className={`order ${nightMode ? 'order_night' : ''}`}>
       <h2>Order</h2>
       <p>{moment.unix(order.data.created).format("MMM Do YYYY, h:mma")}</p>
       <p className="order__id">

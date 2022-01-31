@@ -3,6 +3,12 @@
   padding: 20px;
   background-color: white;
   height: max-content;
+  min-height: 90vh;
+}
+
+.checkout_night {
+  background-color: rgb(5, 5, 12);
+  color: rgb(179, 177, 177);
 }
 
 .checkout__ad {
@@ -16,3 +22,7 @@
   border-bottom: 1px solid lightgray;
 }
 
+.checkout__empty {
+  margin-top: 20px;
+  text-align: center;
+}
