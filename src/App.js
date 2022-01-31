@@ -10,6 +10,7 @@ import Payment from "./components/Payment";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Orders from "./components/Orders";
+import Footer from "./components/Footer";
 
 const promise = loadStripe(
   "pk_test_51KND7jK6jfjgEuSCOsS9fZJRk3pzKu95oYy6NkscgBB0H7bwZHwJsGgqvqBCVM1DwNvusY8THHOfJ1QWCgEEW7ww00sHzWpU4C"
@@ -47,6 +48,7 @@ function App() {
               <>
                 <Header />
                 <Checkout />
+                <Footer />
               </>
             }
           />
@@ -56,6 +58,7 @@ function App() {
               <>
                 <Header />
                 <Home />
+                <Footer />
               </>
             }
           />
@@ -67,6 +70,7 @@ function App() {
                 <Elements stripe={promise}>
                   <Payment />
                 </Elements>
+                <Footer />
               </>
             }
           />
@@ -76,6 +80,7 @@ function App() {
               <>
                 <Header />
                 <Orders />
+                <Footer />
               </>
             }
           />
