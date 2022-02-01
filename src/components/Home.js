@@ -44,7 +44,7 @@ const products = [
     price: 20.1,
   },
   {
-    id: "5746653",
+    id: "5246653",
     image:
       "https://brain-images-ssl.cdn.dixons.com/0/5/10202550/u_10202550.jpg",
     rating: 2,
@@ -60,7 +60,15 @@ const products = [
     price: 70.32,
   },
 ];
-const Home = ({nightMode}) => {
+const Home = ({ nightMode, query, setQuery }) => {
+  const filteredProducts = products?.filter((el) => {
+    if (query === "") {
+      return el;
+    } else if (el.title.toLowerCase().includes(query.toLowerCase())) {
+      return el;
+    }
+  });
+
   return (
     <div className="home">
       <div className="home__container">
@@ -70,16 +78,18 @@ const Home = ({nightMode}) => {
           alt="banner"
         />
 
-        <div className="home__items">
-          {products.map((product) => (
-            <div className="home__item">
+        <div className="home__items">{
+  filteredProducts.length === 0 && <h1 className={`home__items__empty ${nightMode ? 'home__items__empty_night' : ''}`}>Nothing matches your search!</h1>
+}
+          {filteredProducts.map((el) => (
+            <div className="home__item" key={el.id}>
               <Product
-              nightMode={nightMode}
-                id={product.id}
-                image={product.image}
-                rating={product.rating}
-                title={product.title}
-                price={product.price}
+                nightMode={nightMode}
+                id={el.id}
+                image={el.image}
+                rating={el.rating}
+                title={el.title}
+                price={el.price}
               />{" "}
             </div>
           ))}

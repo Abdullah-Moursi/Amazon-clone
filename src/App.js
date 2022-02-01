@@ -18,6 +18,7 @@ const promise = loadStripe(
 );
 
 function App() {
+  const [query, setQuery] = useState("");
   const [nightMode, setNightMode] = useState(false);
   const [{}, dispatch] = useStateValue();
 
@@ -48,7 +49,7 @@ function App() {
             path="/checkout"
             element={
               <>
-                <Header nightMode={nightMode} setNightMode={setNightMode} />
+                <Header nightMode={nightMode} setNightMode={setNightMode} setQuery={setQuery} query={query} />
                 <Checkout nightMode={nightMode} />
                 <Footer />
               </>
@@ -58,8 +59,8 @@ function App() {
             path="/"
             element={
               <>
-                <Header nightMode={nightMode} setNightMode={setNightMode} />
-                <Home nightMode={nightMode}/>
+                <Header nightMode={nightMode} setNightMode={setNightMode} setQuery={setQuery} query={query}/>
+                <Home nightMode={nightMode} query={query} setQuery={setQuery}/>
                 <Footer />
               </>
             }
@@ -68,7 +69,7 @@ function App() {
             path="/payment"
             element={
               <>
-                <Header nightMode={nightMode} setNightMode={setNightMode} />
+                <Header nightMode={nightMode} setNightMode={setNightMode} setQuery={setQuery} query={query}/>
                 <Elements stripe={promise}>
                   <Payment nightMode={nightMode}/>
                 </Elements>
@@ -80,7 +81,7 @@ function App() {
             path="/orders"
             element={
               <>
-                <Header nightMode={nightMode} setNightMode={setNightMode} />
+                <Header nightMode={nightMode} setNightMode={setNightMode} setQuery={setQuery} query={query}/>
                 <Orders nightMode={nightMode}/>
                 <Footer />
               </>

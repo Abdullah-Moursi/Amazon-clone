@@ -17,6 +17,15 @@
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
+  min-height: 90vh;
+}
+
+.home__items__empty {
+  margin-top: 10px;
+}
+
+.home__items__empty_night {
+  color: rgb(216, 216, 216);
 }
 
 .home__item {

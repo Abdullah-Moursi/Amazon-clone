@@ -121,11 +121,11 @@ const Footer = () => {
       </div>
       <div className="footer__contents">
         {footerContents.map((content) => (
-          <div className="footer__contents__column">
+          <div key={content.title} className="footer__contents__column">
             <ul className="ul">
               <h3>{content.title}</h3>
               {content.subtitles.map((subtitle) => (
-                <a target="_blank" rel="noreferrer" href={subtitle.link}>
+                <a target="_blank" rel="noreferrer" href={subtitle.link} key={subtitle.title}>
                   <li className="li">{subtitle.title}</li>
                 </a>
               ))}

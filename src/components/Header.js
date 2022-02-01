@@ -2,17 +2,31 @@ import React, { useState } from "react";
 import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasket from "@material-ui/icons/ShoppingBasket";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 import { auth } from "../firebase";
 import { FormControlLabel, Switch } from "@material-ui/core";
 
-function Header({nightMode, setNightMode}) {
+function Header({ nightMode, setNightMode, setQuery, query }) {
   const [{ basket, user }] = useStateValue();
+  const [search, setSearch] = useState("");
+
+  const navigate = useNavigate();
+
+  const getInput = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const getQuery = (e) => {
+    e.preventDefault();
+    setQuery(search);
+    setSearch("");
+    navigate("/");
+  };
 
   const handleChange = () => {
-    setNightMode(!nightMode)
-    console.log(nightMode)
+    setNightMode(!nightMode);
+    console.log(nightMode);
   };
   const handleAuthentication = () => {
     if (user) {
@@ -24,27 +38,29 @@ function Header({nightMode, setNightMode}) {
     <div className="header">
       <Link to="/">
         <img
+          onClick={() => setQuery("")}
           className="header__logo"
           src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
           alt="logo"
         />
       </Link>
-
       <FormControlLabel
-          control={
-            <Switch    
-              checked={nightMode}
-              onChange={handleChange}
-              color="primary"
-            />
-          }
+        control={
+          <Switch checked={nightMode} onChange={handleChange} color="primary" />
+        }
+      />
+      <form className="header__search" onSubmit={getQuery}>
+        <input
+          onChange={getInput}
+          value={search}
+          placeholder={query}
+          className="header__searchInput"
+          type="text"
         />
-
-      <div className="header__search">
-        <input className="header__searchInput" type="text" />
-        <SearchIcon className="header__searchIcon" />
-      </div>
-
+        <button type="submit">
+          <SearchIcon className="header__searchIcon" />
+        </button>
+      </form>
       <div className="header__nav">
         <Link to={!user && "/login"}>
           <div onClick={handleAuthentication} className="header__option">
@@ -62,7 +78,7 @@ function Header({nightMode, setNightMode}) {
             <span className="header__optionLineTwo">& Orders</span>
           </div>
         </Link>
-        
+
         <Link to="/checkout">
           <div className="header__optionBasket">
             <ShoppingBasket />
