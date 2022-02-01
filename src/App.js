@@ -42,14 +42,19 @@ function App() {
 
   return (
     <Router>
-      <div className={`App ${nightMode? 'App_night' : ''}`}>
+      <div className={`App ${nightMode ? "App_night" : ""}`}>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route
             path="/checkout"
             element={
               <>
-                <Header nightMode={nightMode} setNightMode={setNightMode} setQuery={setQuery} query={query} />
+                <Header
+                  nightMode={nightMode}
+                  setNightMode={setNightMode}
+                  setQuery={setQuery}
+                  query={query}
+                />
                 <Checkout nightMode={nightMode} />
                 <Footer />
               </>
@@ -59,8 +64,13 @@ function App() {
             path="/"
             element={
               <>
-                <Header nightMode={nightMode} setNightMode={setNightMode} setQuery={setQuery} query={query}/>
-                <Home nightMode={nightMode} query={query} setQuery={setQuery}/>
+                <Header
+                  nightMode={nightMode}
+                  setNightMode={setNightMode}
+                  setQuery={setQuery}
+                  query={query}
+                />
+                <Home nightMode={nightMode} query={query} />
                 <Footer />
               </>
             }
@@ -69,9 +79,14 @@ function App() {
             path="/payment"
             element={
               <>
-                <Header nightMode={nightMode} setNightMode={setNightMode} setQuery={setQuery} query={query}/>
+                <Header
+                  nightMode={nightMode}
+                  setNightMode={setNightMode}
+                  setQuery={setQuery}
+                  query={query}
+                />
                 <Elements stripe={promise}>
-                  <Payment nightMode={nightMode}/>
+                  <Payment nightMode={nightMode} />
                 </Elements>
                 <Footer />
               </>
@@ -81,8 +96,13 @@ function App() {
             path="/orders"
             element={
               <>
-                <Header nightMode={nightMode} setNightMode={setNightMode} setQuery={setQuery} query={query}/>
-                <Orders nightMode={nightMode}/>
+                <Header
+                  nightMode={nightMode}
+                  setNightMode={setNightMode}
+                  setQuery={setQuery}
+                  query={query}
+                />
+                <Orders nightMode={nightMode} />
                 <Footer />
               </>
             }

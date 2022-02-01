@@ -60,7 +60,7 @@ const products = [
     price: 70.32,
   },
 ];
-const Home = ({ nightMode, query, setQuery }) => {
+const Home = ({ nightMode, query }) => {
   const filteredProducts = products?.filter((el) => {
     if (query === "") {
       return el;
@@ -78,9 +78,16 @@ const Home = ({ nightMode, query, setQuery }) => {
           alt="banner"
         />
 
-        <div className="home__items">{
-  filteredProducts.length === 0 && <h1 className={`home__items__empty ${nightMode ? 'home__items__empty_night' : ''}`}>Nothing matches your search!</h1>
-}
+        <div className="home__items">
+          {filteredProducts.length === 0 && (
+            <h1
+              className={`home__items__empty ${
+                nightMode ? "home__items__empty_night" : ""
+              }`}
+            >
+              Nothing matches your search!
+            </h1>
+          )}
           {filteredProducts.map((el) => (
             <div className="home__item" key={el.id}>
               <Product
