@@ -2,12 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Product from "./Product";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Home = ({ nightMode, query }) => {
   const [products, setProducts] = useState([]);
 
   const getProducts = async () => {
-    const response = await axios.get("https://fakestoreapi.com/products/");
+    const response = await axios.get("https://fakestoreapi.com/products");
     setProducts(response.data);
   };
 
@@ -33,7 +34,9 @@ const Home = ({ nightMode, query }) => {
         />
 
         <div className="home__items">
-          {filteredProducts.length === 0 && (
+          {products.length === 0 && <CircularProgress color="secondary" />}
+
+          {filteredProducts.length === 0 && products.length !== 0 && (
             <h1
               className={`home__items__empty ${
                 nightMode ? "home__items__empty_night" : ""
