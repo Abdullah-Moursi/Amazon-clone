@@ -20,7 +20,7 @@ const Checkout = ({nightMode}) => {
           <h3>Hello, {user?.email} </h3>
           <h2 className="checkout__title">Your shopping Basket</h2>
           {
-            basket.length===0 && <h1 className="checkout__empty">You don't have any products!</h1>
+            basket.length === 0 && <h1 className="checkout__empty">You don't have any products!</h1>
           }
           {basket.map((el, index) => (
             <CheckoutProduct

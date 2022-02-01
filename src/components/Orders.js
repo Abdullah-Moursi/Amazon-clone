@@ -30,6 +30,7 @@ const Orders = ({nightMode}) => {
   return (
     <div className={`orders ${nightMode ? 'orders_night' : ''}`}>
       <h1>Your Orders</h1>
+      {orders.length === 0 && <h2 className="orders__empty">You don't have any orders!</h2>}
       <div className="orders__order">
         {orders?.map((order) => (
           <Order nightMode={nightMode} order={order} />
