@@ -9,9 +9,8 @@
   max-height: 400px;
   min-width: 100px;
   border: 1px solid rgb(228, 228, 228);
-  z-index: 1;  
+  z-index: 1;
   background-color: #fff;
-
 }
 
 .product_night {
@@ -27,12 +26,21 @@
   width: 100%;
   object-fit: contain;
   margin-bottom: 15px;
+  cursor: pointer;
 }
 
-.product > button {
+.image__night {
+  mask-image: linear-gradient(
+    rgba(255, 255, 255, 0.904),
+    rgba(255, 255, 255, 0.842)
+  );
+}
+
+.product > button,
+.modal__button {
   background: #f0c14b;
   border: 1px solid;
-  margin-top: 10px;
+  margin: 10px 0;
   border-color: #a88734 #9c7e31 #846a29;
   color: #111;
   cursor: pointer;
@@ -45,4 +53,39 @@
 .product__info {
   height: 100px;
   margin-bottom: 15px;
+}
+
+/* Modal */
+.modal {
+  padding-top: 5vh;
+}
+
+.modalProduct__details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-height: 96vh;
+}
+
+.modalProduct__details img {
+  max-height: 90vh;
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.modalProduct__details__description {
+  flex: 1 1;
+  margin: 1rem;
+}
+
+.close__modal {
+  position: absolute;
+  cursor: pointer;
+  right: 1rem;
+  top: 2.5rem;
+  z-index: 100;
+}
+
+.modalProduct__description {
+  margin-top: 3px;
 }
