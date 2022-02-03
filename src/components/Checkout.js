@@ -3,6 +3,7 @@ import { useStateValue } from "../StateProvider";
 import "./Checkout.css";
 import CheckoutProduct from "./CheckoutProduct";
 import Subtotal from "./Subtotal";
+import Fade from "react-reveal/Fade";
 
 const Checkout = ({ nightMode }) => {
   const [{ basket, user }] = useStateValue();
@@ -23,6 +24,8 @@ const Checkout = ({ nightMode }) => {
             <h1 className="checkout__empty">You don't have any products!</h1>
           )}
           {basket.map((el, index) => (
+                    <Fade left >
+
             <CheckoutProduct
               key={index}
               title={el.title}
@@ -31,6 +34,7 @@ const Checkout = ({ nightMode }) => {
               price={el.price}
               rating={el.rating}
             />
+            </Fade>
           ))}
         </div>
       </div>
