@@ -12,7 +12,7 @@ const Home = ({ nightMode, query }) => {
   const [products, setProducts] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(20);
+  const [itemsPerPage] = useState(7);
 
   const [productModal, setProductModal] = useState(null);
 
