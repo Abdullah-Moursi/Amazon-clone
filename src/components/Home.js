@@ -4,12 +4,16 @@ import "./Home.css";
 import Product from "./Product";
 import Fade from "react-reveal/Fade";
 import { CircularProgress } from "@mui/material";
-import Modal from "react-modal";
 import Zoom from "react-reveal/Zoom";
 import ReactModal from "react-modal";
+import Pagenation from "./Pagenation";
 
 const Home = ({ nightMode, query }) => {
   const [products, setProducts] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(20);
+
   const [productModal, setProductModal] = useState(null);
 
   const openModal = (product) => {
@@ -21,7 +25,7 @@ const Home = ({ nightMode, query }) => {
   };
   const getProducts = async () => {
     const response = await axios.get("https://fakestoreapi.com/products");
-    setProducts(response.data);
+    setProducts(response?.data);
   };
 
   useEffect(() => {
@@ -35,6 +39,15 @@ const Home = ({ nightMode, query }) => {
       return el;
     }
   });
+
+  const inedexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = inedexOfLastItem - itemsPerPage;
+  const currentItems = filteredProducts.slice(
+    indexOfFirstItem,
+    inedexOfLastItem
+  );
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="home">
@@ -57,7 +70,7 @@ const Home = ({ nightMode, query }) => {
                 Nothing matches your search!
               </h1>
             )}
-            {filteredProducts.map((el) => (
+            {currentItems.map((el) => (
               <div className="home__item" key={el.id}>
                 <Product
                   openModal={() => openModal(el)}
@@ -113,6 +126,12 @@ const Home = ({ nightMode, query }) => {
             ))}
           </div>{" "}
         </Fade>
+
+        <Pagenation
+          paginate={paginate}
+          itemsPerPage={itemsPerPage}
+          totalItems={filteredProducts.length}
+        />
       </div>
     </div>
   );

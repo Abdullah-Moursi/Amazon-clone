@@ -20,6 +20,11 @@
   width: 180px;
   object-fit: contain;
   height: 180px;
+
+}
+
+.checkoutProduct__image:hover {
+  transform: scale(1.2);
 }
 
 .checkoutProduct__rating {

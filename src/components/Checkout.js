@@ -24,16 +24,15 @@ const Checkout = ({ nightMode }) => {
             <h1 className="checkout__empty">You don't have any products!</h1>
           )}
           {basket.map((el, index) => (
-                    <Fade left >
-
-            <CheckoutProduct
-              key={index}
-              title={el.title}
-              image={el.image}
-              id={el.id}
-              price={el.price}
-              rating={el.rating}
-            />
+            <Fade left>
+              <CheckoutProduct
+                key={index}
+                title={el.title}
+                image={el.image}
+                id={el.id}
+                price={el.price}
+                rating={el.rating}
+              />
             </Fade>
           ))}
         </div>
