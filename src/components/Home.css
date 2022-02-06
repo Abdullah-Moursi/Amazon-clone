@@ -35,3 +35,8 @@
   margin-right: 5px;
   flex-basis: 32.633333%;
 }
+
+.pagination__container {
+  display: flex;
+  justify-content: center;
+}

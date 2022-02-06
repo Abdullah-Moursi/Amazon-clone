@@ -1,0 +1,40 @@
+.modal__container {
+  padding-top: 5vh;
+}
+
+.modalProduct__details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-height: 96vh;
+}
+
+.modalProduct__details img {
+  max-height: 90vh;
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 720px) {
+  .modalProduct__details img {
+    max-height: 60vh;
+    max-width: 15rem;
+  }
+}
+
+.modalProduct__details__description {
+  flex: 1 1;
+  margin: 1rem;
+}
+
+.close__modal {
+  position: absolute;
+  cursor: pointer;
+  right: 1rem;
+  top: 2.5rem;
+  z-index: 100;
+}
+
+.modalProduct__description {
+  margin-top: 3px;
+}

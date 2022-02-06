@@ -1,5 +1,6 @@
 import React from "react";
 import { useStateValue } from "../StateProvider";
+import Modal from "./Modal";
 import "./Product.css";
 
 const Product = ({
@@ -32,33 +33,15 @@ const Product = ({
   return (
     <>
       {modal ? (
-        <div className='modal'>
-          <button className="close__modal" onClick={closeModal}>
-            x
-          </button>
-          <div className="modalProduct__details">
-            <img className={`${nightMode && 'image__night '}`} src={image} alt={title} />
-            <div className="modalProduct__details__description">
-              <p>
-                <strong>{title}</strong>
-              </p>
-              <p className='modalProduct__description'>{description}</p>
-              <p className="product__price">
-              <small>$</small>
-              <strong>{price}</strong>
-            </p>
-                <button
-                  className="modal__button"
-                  onClick={() => {
-                    addToBasket();
-                    closeModal();
-                  }}
-                >
-                  Add to Basket
-                </button>
-            </div>
-          </div>
-        </div>
+        <Modal
+          nightMode={nightMode}
+          closeModal={closeModal}
+          addToBasket={addToBasket}
+          image={image}
+          title={title}
+          description={description}
+          price={price}
+        />
       ) : (
         <div className={`product ${nightMode ? "product_night " : ""}`}>
           <div className="product__info">
@@ -68,16 +51,21 @@ const Product = ({
               <small>$</small>
               <strong>{price}</strong>
             </p>
-            <div className="product__rating">
+           
+          </div>
+ <div className="product__rating">
               {Array(rating)
                 .fill()
                 .map((_, i) => (
                   <p key={i}>⭐</p>
                 ))}
             </div>
-          </div>
-
-          <img className={`${nightMode && 'image__night '}`} onClick={openModal} src={image} alt={title} />
+          <img
+            className={`${nightMode && "image__night "}`}
+            onClick={openModal}
+            src={image}
+            alt={title}
+          />
           <button
             onClick={() => {
               addToBasket();

@@ -5,7 +5,7 @@ import Product from "./Product";
 import Fade from "react-reveal/Fade";
 import { CircularProgress } from "@mui/material";
 import Zoom from "react-reveal/Zoom";
-import ReactModal from "react-modal";
+import Modal from "react-modal";
 import Pagenation from "./Pagenation";
 
 const Home = ({ nightMode, query }) => {
@@ -42,7 +42,7 @@ const Home = ({ nightMode, query }) => {
 
   const inedexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = inedexOfLastItem - itemsPerPage;
-  const currentItems = filteredProducts.slice(
+  const currentItems = filteredProducts?.slice(
     indexOfFirstItem,
     inedexOfLastItem
   );
@@ -82,7 +82,10 @@ const Home = ({ nightMode, query }) => {
                   price={el.price}
                 />{" "}
                 {productModal === el && (
-                  <ReactModal
+                  <Modal
+                    ariaHideApp={false}
+                    isOpen={true}
+                    onRequestClose={closeModal}
                     style={
                       nightMode
                         ? {
@@ -90,9 +93,9 @@ const Home = ({ nightMode, query }) => {
                               backgroundColor: "rgb(133, 133, 134)",
                             },
                             content: {
-                              backgroundColor: "rgb(5, 5, 12)",
+                              backgroundColor: "#1a1a2e",
 
-                              color: "white",
+                              color: "#FBDCC4",
                             },
                           }
                         : {
@@ -103,8 +106,6 @@ const Home = ({ nightMode, query }) => {
                             },
                           }
                     }
-                    isOpen={true}
-                    onRequestClose={closeModal}
                   >
                     <Zoom>
                       <Product
@@ -120,18 +121,20 @@ const Home = ({ nightMode, query }) => {
                         modal
                       />
                     </Zoom>
-                  </ReactModal>
+                  </Modal>
                 )}
               </div>
             ))}
           </div>{" "}
         </Fade>
-
-        <Pagenation
+<div className="pagination__container">
+   <Pagenation
           paginate={paginate}
           itemsPerPage={itemsPerPage}
           totalItems={filteredProducts.length}
         />
+</div>
+       
       </div>
     </div>
   );
