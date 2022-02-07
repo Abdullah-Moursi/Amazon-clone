@@ -10,10 +10,8 @@ import Pagenation from "./Pagenation";
 
 const Home = ({ nightMode, query }) => {
   const [products, setProducts] = useState([]);
-
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(7);
-
   const [productModal, setProductModal] = useState(null);
 
   const openModal = (product) => {
@@ -127,14 +125,13 @@ const Home = ({ nightMode, query }) => {
             ))}
           </div>{" "}
         </Fade>
-<div className="pagination__container">
-   <Pagenation
-          paginate={paginate}
-          itemsPerPage={itemsPerPage}
-          totalItems={filteredProducts.length}
-        />
-</div>
-       
+        <div className="pagination__container">
+          <Pagenation
+            paginate={paginate}
+            itemsPerPage={itemsPerPage}
+            totalItems={filteredProducts.length}
+          />
+        </div>
       </div>
     </div>
   );

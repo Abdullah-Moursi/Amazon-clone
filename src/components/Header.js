@@ -26,7 +26,6 @@ function Header({ nightMode, setNightMode, setQuery, query }) {
 
   const handleChange = () => {
     setNightMode(!nightMode);
-    console.log(nightMode);
   };
   const handleAuthentication = () => {
     if (user) {

@@ -11,7 +11,14 @@ export const Pagenation = ({ itemsPerPage, totalItems, paginate }) => {
       <ul className="pagination">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
-            <a href="#!" onClick={() => paginate(number)} className="page-link">
+            <a
+              href="#!"
+              onClick={() => {
+                paginate(number);
+                window.scrollTo(0, 0);
+              }}
+              className="page-link"
+            >
               {number}
             </a>
           </li>

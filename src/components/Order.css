@@ -4,12 +4,14 @@
   border: 1px solid lightgray;
   background-color: #fff;
   position: relative;
+  min-width: 410px;
 }
 
 .order_night {
   background-color: #0b0b20;
   border: 1px solid #3e3e77;
-  color: rgb(201, 200, 200);}
+  color: rgb(201, 200, 200);
+}
 
 .order__id {
   position: absolute;
@@ -18,6 +20,6 @@
 }
 
 .order__total {
-    font-weight: 500;
-    text-align: right;
+  font-weight: 500;
+  text-align: right;
 }

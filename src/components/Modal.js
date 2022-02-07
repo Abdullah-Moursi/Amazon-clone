@@ -9,7 +9,7 @@ const Modal = ({closeModal, nightMode, image, title, description, price, addToBa
           <div className="modalProduct__details">
             <img className={`${nightMode && 'image__night '}`} src={image} alt={title} />
             <div className="modalProduct__details__description">
-              <p>
+              <p className='modalProduct__details__description__title'>
                 <strong>{title}</strong>
               </p>
               <p className='modalProduct__description'>{description}</p>

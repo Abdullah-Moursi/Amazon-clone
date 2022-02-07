@@ -14,7 +14,7 @@
   min-height: 17px;
   max-height: 60px;
   background-color: #283341;
-  padding: 20px ;
+  padding: 20px;
 }
 
 .footer__backToTop:hover {
@@ -25,9 +25,10 @@
   margin: 0px 30px;
   justify-content: center;
   padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
   text-align: left;
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(10em, 25em));
 }
 
 .footer__contents__column {
@@ -38,19 +39,20 @@
   list-style-type: none;
 }
 
-.li {
-  padding: 4px 0;
+.footer__element {
+  padding: 3px 0;
   cursor: pointer;
   color: white;
 }
 
-.li:hover {
+.footer__element:hover {
   text-decoration: underline;
 }
 
 .footer__contents__column > ul > h3 {
   padding-top: 10px;
   padding-bottom: 5px;
+  font-size: large;
 }
 
 .footer__logo {

@@ -5,7 +5,7 @@ import Order from "./Order";
 import "./Orders.css";
 import Fade from "react-reveal/Fade";
 
-const Orders = ({nightMode}) => {
+const Orders = ({ nightMode }) => {
   const [{ basket, user }, dispatch] = useStateValue();
   const [orders, setOrders] = useState([]);
 
@@ -29,14 +29,15 @@ const Orders = ({nightMode}) => {
   }, [user]);
 
   return (
-    <div className={`orders ${nightMode ? 'orders_night' : ''}`}>
+    <div className={`orders ${nightMode ? "orders_night" : ""}`}>
       <h1>Your Orders</h1>
-      {orders.length === 0 && <h2 className="orders__empty">You don't have any orders!</h2>}
+      {orders.length === 0 && (
+        <h2 className="orders__empty">You don't have any orders!</h2>
+      )}
       <div className="orders__order">
         {orders?.map((order) => (
-                              <Fade top >
-
-          <Order nightMode={nightMode} order={order} />
+          <Fade top>
+            <Order nightMode={nightMode} order={order} />
           </Fade>
         ))}
       </div>

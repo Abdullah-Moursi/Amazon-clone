@@ -33,8 +33,14 @@
   right: 1rem;
   top: 2.5rem;
   z-index: 100;
+  background-color: #f0c14b;
+  padding: 1px 6px;
 }
 
 .modalProduct__description {
   margin-top: 3px;
+}
+
+.modalProduct__details__description__title {
+  margin-top: 10px;
 }
